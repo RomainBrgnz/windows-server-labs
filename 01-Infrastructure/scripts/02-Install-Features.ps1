@@ -10,12 +10,12 @@ foreach ($Feature in $Features) {
     Write-Host "Starting the instalation of : $Feature"
 
     try {
-
+        Install-WindowsFeature -Name $Feature -IncludeManagementTools -ErrorAction Stop
     }
     catch {
-        Write-Host "Error during the installation" -ForegroundColor Red
+        Write-Host "$Feature : Error during the installation : $($_.Exception.Message)" -ForegroundColor Red
     }
 
-    Write-Host "Installation successful" -ForegroundColor Green
+    Write-Host "$Feature successfully installed" -ForegroundColor Green
 
 }
