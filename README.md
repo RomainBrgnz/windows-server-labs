@@ -8,14 +8,14 @@ Before diving into the services, here is the global setup used for these project
 * **Client OS:** Windows 11 Pro
 
 ## Repository Structure
-
-📂 windows-server
-├── 📄 README.md                **<- You are here**
-└── 📂 01-Infrastructure        <-- First project focusing on AD DS, DNS & DHCP
-    ├── 📄 README.md            <-- Detailed documentation & troubleshooting
-    └── 📂 images               <-- Screenshots and visuals
-    └── 📂 scripts              <-- PowerShell scripts
-
+```text
+📂 windows-server-labs
+├── 📄 README.md                 <-- You are here
+└── 📂 01-Infrastructure         <-- First project focusing on AD DS, DNS & DHCP
+    ├── 📄 README.md             <-- Detailed documentation & troubleshooting
+    ├── 📂 images                <-- Screenshots and visuals
+    └── 📂 scripts               <-- PowerShell scripts
+```
 ## Projects Roadmap
 
 * [x] **[01-Infrastructure](./01-Infrastructure):** Active Directory, DNS, and DHCP deployment.
