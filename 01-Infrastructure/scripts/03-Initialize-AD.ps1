@@ -6,24 +6,11 @@ Write-Host "Active Directory Domain Controller configuration" -ForegroundColor B
 $DomainName = Read-Host "Enter the domain name (ex: domain.com): "
 $DomainNameNetBios = Read-Host "Enter the NetBIOS domain name (ex: DOMAIN): "
 
-# Prompt the user for a DSRM Password + verification
-while ($DSRMPassword -ne $PasswordCheck) {
-
-    $DSRMPassword = Read-Host "Enter a Safe Mode Administrator Password: " -AsSecureString
-    $PasswordCheck = Read-Host "Enter the password again: " -AsSecureString
-
-    if ($DSRMPassword -ne $PasswordCheck) {
-        Write-Warning "Passwords doesn't match. Try again."
-    }
-
-}
-
 # We store the config in a hashtable
 # https://learn.microsoft.com/en-us/powershell/module/addsdeployment/install-addsforest?view=windowsserver2025-ps
 $ForestConfig = @{
     DomainName                      = $DomainName
     DomainNetbiosName               = $DomainNameNetBios
-    SafeModeAdministratorPassword   = $DSRMPassword
     DomainMode                      = 'Default'
     ForestMode                      = 'Default'
     InstallDns                      = $true
