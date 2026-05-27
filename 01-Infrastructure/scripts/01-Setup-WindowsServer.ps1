@@ -8,7 +8,7 @@
 Clear-Host
 
 # Welcome message and prompt the user to start
-Write-Host "Welcome $((Get-LocalUser).Name)! We are going to configure your Windows Server." -BackgroundColor DarkGray
+Write-Host "Welcome $env:USERNAME! We are going to configure your Windows Server." -BackgroundColor DarkGray
 Read-Host "Press ENTER to continue..." 
 
 # First of all, we need to change the hostname of the server (renaming the computer)
@@ -33,7 +33,7 @@ $GatewayIP = Read-Host "Enter the IP address of the gateway : "
 # We are not using Set-NetIPAddress because it's usually used to modify the properties of an existing IP address
 # In this case, we are switching from DHCP to Static, we need to use the first cmdlet.
 try {
-    New-NetIPAddress -IPAddress $NewIP -PrefixLength 24 -InterfaceIndex (Get-NetAdapter).ifIndex -DefaultGateway $GatewayIP -ErrorAction Stop
+    Set-NetIPAddress -IPAddress $NewIP -PrefixLength 24 -InterfaceIndex (Get-NetAdapter).ifIndex -DefaultGateway $GatewayIP -ErrorAction Stop
     Write-Host -ForegroundColor Green "IP Address and Gateway have been successfully changed."
 }
 catch {
